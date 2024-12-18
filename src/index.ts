@@ -71,3 +71,28 @@ const maths:AddRectangle = {
 }
 
 console.log("maths",maths)
+
+// Union
+
+function statusCode(x:string|number){
+    if(typeof x === "string"){
+        return Number(x)
+    }
+    return "Not implemented"
+}
+
+// console.log("statusCode", statusCode(200))
+
+
+
+// Void
+function greet():void{
+    console.log("Hello World")
+}
+
+// casting
+
+let hel:unknown="hello "
+console.log((hel as string).length)
+
+
