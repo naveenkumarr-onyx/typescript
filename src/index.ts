@@ -96,3 +96,24 @@ let hel:unknown="hello "
 console.log((hel as string).length)
 
 
+// Constraint using interface with extends
+
+interface HasLength{
+    length : number
+}
+
+function logWithLength(value:HasLength){
+    return console.log(`Length ${value}`)
+}
+
+
+logWithLength("Hello World")
+
+
+const obj : HasLength = {
+    length: 2
+}
+
+console.log(obj)
+
+
