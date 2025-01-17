@@ -1,22 +1,33 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
-// Define the schema with the timestamps option
-const roleSchema = new mongoose.Schema(
+
+interface IRole extends Document{
+  role_name: String,
+  description : String,
+  timestamps: Boolean,
+  permissions : mongoose.Types.ObjectId[]
+}
+
+
+const roleSchema = new Schema<IRole>(
   {
     role_name: {
       type: String,
       required: true,
-      unique: true, // Ensures role_name must be unique
+      unique: true, 
     },
     description: {
       type: String,
       default: "",
     },
+    permissions:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Permission",
+    }]
   },
   {
-    timestamps: true, // Automatically creates createdAt and updatedAt fields
+    timestamps: true, 
   }
 );
 
-const Role = mongoose.model("Role", roleSchema);
-export default Role;
+export const Role = mongoose.model<IRole>("Role", roleSchema);
