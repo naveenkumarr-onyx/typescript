@@ -14,7 +14,6 @@ const employeeRegisterSchema = new Schema<IUser>({
   userName: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -23,11 +22,11 @@ const employeeRegisterSchema = new Schema<IUser>({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   phone: {
     type: Number,
     required: true,
+    unique:true
   },
   role_ids: [
     {

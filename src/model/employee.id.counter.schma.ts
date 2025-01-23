@@ -17,8 +17,6 @@ const generateEmployeeId = new Schema<IgenerateEmployeId> ({
         type: String,
         required: true,
         unique: true,
-        modelNames:"",
-        default: "EMP"
     }
 })
 
