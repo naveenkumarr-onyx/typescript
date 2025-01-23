@@ -2,6 +2,7 @@ import mongoose, { Document, Schema } from "mongoose";
 
 
 interface IRole extends Document{
+  role_id:String,
   role_name: String,
   description : String,
   timestamps: Boolean,
@@ -11,6 +12,11 @@ interface IRole extends Document{
 
 const roleSchema = new Schema<IRole>(
   {
+    role_id :{
+      type: String,
+      unique: true,
+      required: true,
+    },
     role_name: {
       type: String,
       required: true,
