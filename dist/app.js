@@ -15,9 +15,7 @@ app.get("/", (req, res) => {
 });
 (0, db_1.connectDB)();
 app.use((0, cors_1.default)({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "*"
 }));
 app.use("/roles", route_1.default);
 app.listen(process.env.APP_PORT, () => {
