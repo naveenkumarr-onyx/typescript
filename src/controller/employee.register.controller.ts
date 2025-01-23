@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { EmployeeRegister } from "../model/employee.register..schema";
-import { v4 as uuidv4 } from "uuid";
 import { Role } from "../model/role.schema";
+import { getNextEmployeeId } from "./generate.employee.id";
 
 export const employeeRegisterController = async (
   req: Request,
   res: Response
 ): Promise<Response | void> => {
   try {
-    const { userName, password, email, phone,role_names,employee_id } = req.body;
+    const { userName, password, email, phone,role_names} = req.body;
     if (!userName || !password || !email || !phone) {
       return res
         .status(400)
@@ -16,7 +16,7 @@ export const employeeRegisterController = async (
     }
 
     const exisiting_Employee = await EmployeeRegister.findOne({
-        $or: [{ email: email }, { phone: phone }],
+        phone
     });
     if (exisiting_Employee) {
       return res.status(409).json({
@@ -24,8 +24,8 @@ export const employeeRegisterController = async (
         message: `Employee already exists with this ${email} or ${phone} for this username (${userName})`,
       });
     }
-
-
+    const schemaName = "employees"
+    const employee_ids = await getNextEmployeeId(schemaName)
 
     const roles = await Role.find({ role_name: { $in: role_names } });
     const role_ids = roles.map((role)=>role._id)
@@ -36,7 +36,7 @@ export const employeeRegisterController = async (
       email,
       phone,
       role_ids,
-      employee_id: employee_id || uuidv4(),
+      employee_id: employee_ids ,
     });
     await registerNewEmployee.save();
     return res.status(201).json({
