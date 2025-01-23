@@ -3,6 +3,7 @@ import { roleController } from "../controller/role.create.controller"; // Correc
 import { asyncHandler } from "../middleware/asyncHandler";
 import { rolePermissionController } from "../controller/permission.role.create.controller";
 import { assignPermissionToRole } from "../controller/assign.role.permissions";
+import { employeeRegisterController } from "../controller/employee.register.controller";
 
 const routes = Router();
 
@@ -17,5 +18,6 @@ const PATH = {
 routes.post(`${PATH.ADD}/addRole`,asyncHandler(roleController))
 routes.post(`${PATH.ADD}/addRolePermission`,asyncHandler(rolePermissionController))
 routes.post(`${PATH.ASSIGN}/assign-permissions`, asyncHandler(assignPermissionToRole))
+routes.post(`${PATH.ADD}/register-employee`, asyncHandler(employeeRegisterController))
 
 export default routes;
