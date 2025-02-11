@@ -6,7 +6,10 @@ import { assignPermissionToRole } from "../controller/assign.role.permissions";
 import { employeeRegisterController } from "../controller/employee.register.controller";
 import { employeeLoginController } from "../controller/employee.login.controller";
 import { jwtMiddleware } from "../middleware/jwt";
-import { getAllEmployeeList } from "../controller/get.all.employees";
+import {
+  getAllEmployeeList,
+  getEmployeeWithPhoneNumber,
+} from "../controller/get.all.employees";
 
 const routes = Router();
 
@@ -41,6 +44,11 @@ routes.get(
 routes.get(
   `${PATH.GET}/get-all-employee-list`,
   asyncHandler(getAllEmployeeList)
+);
+
+routes.get(
+  `${PATH.GET}/get-employee/:phone`,
+  asyncHandler(getEmployeeWithPhoneNumber)
 );
 
 export default routes;
