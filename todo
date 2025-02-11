@@ -1,0 +1,10 @@
+# Implemented
+
+- [ ] Permissions role assigns
+- [ ] Employee login and register controller
+- [ ] JWT implemented for login
+
+# TODO List
+
+- need to create specific action for all roles
+- need to implement get all employee details
