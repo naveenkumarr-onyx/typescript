@@ -16,7 +16,7 @@ app.use(
     origin: "*"
   })
 );
-app.use("/roles",routes)
+app.use("/app",routes)
 app.listen(process.env.APP_PORT,()=>{
     console.log(`[SERVER] Express is running on port ${process.env.APP_PORT}`);
 })

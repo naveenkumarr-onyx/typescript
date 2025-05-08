@@ -10,6 +10,7 @@ import {
   getAllEmployeeList,
   getEmployeeWithPhoneNumber,
 } from "../controller/get.all.employees";
+import { youtubeaudiodownloader } from "../controller/yt";
 
 const routes = Router();
 
@@ -50,5 +51,7 @@ routes.get(
   `${PATH.GET}/get-employee/:phone`,
   asyncHandler(getEmployeeWithPhoneNumber)
 );
+
+routes.post(`${PATH.GET}/yt-mp3-info`,asyncHandler(youtubeaudiodownloader))
 
 export default routes;
