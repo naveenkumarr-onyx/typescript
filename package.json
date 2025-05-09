@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc -p",
+    "build": "tsc && xcopy src\\config dist\\config /E /I /Y",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "dev": "ts-node-dev src/app.ts",
