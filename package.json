@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc && xcopy src\\config dist\\config /E /I /Y",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .ts",
-    "dev": "ts-node-dev src/app.ts",
-    "start": "tsc && node dist/app.js"
-  },
+  "clean": "rmdir /s /q dist || echo 'dist not found'",          
+  "build": "npm run clean && tsc && xcopy src\\config dist\\config /E /I /Y",
+  "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+  "start": "node dist/app.js",
+  "lint": "eslint . --ext .ts",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "author": "naveen",
   "license": "ISC",
   "description": "",
