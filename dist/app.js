@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("dotenv/config");
 const cors_1 = __importDefault(require("cors"));
-const db_1 = __importDefault(require("./config/db"));
+// require("./config/db");
 const route_1 = __importDefault(require("./routes/route"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-(0, db_1.default)();
+// connectDB()
 app.get("/", (req, res) => {
     res.send(`Backend is running on port ${process.env.APP_PORT}... Have fun!`);
 });
