@@ -19,3 +19,5 @@ export const connectDB = () => {
   return mongoose.connection;
 };
 
+export{}
+

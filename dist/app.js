@@ -13,6 +13,7 @@ app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.send(`Backend is running on port ${process.env.APP_PORT}... Have fun!`);
 });
+// connectDB()
 app.use((0, cors_1.default)({
     origin: "*"
 }));
