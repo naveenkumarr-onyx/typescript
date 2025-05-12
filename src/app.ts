@@ -1,16 +1,16 @@
 import express, { Request, Response } from "express";
 import 'dotenv/config'
 import cors from "cors";
-require ("./config/db");
+import connectDB from "./config/db";
 import routes from "./routes/route";
 
 
 const app = express();
 app.use(express.json())
+connectDB()
 app.get("/",(req:Request,res:Response)=>{
     res.send(`Backend is running on port ${process.env.APP_PORT}... Have fun!`);
 })
-// connectDB()
 app.use(
   cors({
     origin: "*"

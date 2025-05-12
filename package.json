@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-  "clean": "rmdir /s /q dist || echo 'dist not found'",          
-  "build": "npm run clean && tsc && xcopy src\\config dist\\config /E /I /Y",
+  "clean": "rm -rf dist",                             
+  "build": "npm run clean && tsc",
   "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
   "start": "node dist/app.js",
   "lint": "eslint . --ext .ts",

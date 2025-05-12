@@ -1,23 +1,13 @@
 import mongoose from "mongoose";
 
-export const connectDB = () => {
-  const dbUrl = process.env.DATABASE;
-
-  if (!dbUrl) {
-    console.error("MongoDB URI is undefined. Check your .env file.");
-    process.exit(1); // Exit with failure
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI!);
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("Connection error", err);
+    process.exit(1);
   }
-
-  mongoose
-    .connect(dbUrl)
-    .then(() => console.log(`[DATABASE] mongoDB connection established successfully`))
-    .catch((error) => {
-      console.error(`MongoDB connection error: ${error.message}`);
-      process.exit(1); // Exit with failure
-    });
-
-  return mongoose.connection;
 };
 
-export{}
-
+export default connectDB;
